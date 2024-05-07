@@ -11,21 +11,25 @@ import RxSwift
 import RxCocoa
 
 final class LoginViewController: BaseViewController {
-    
-    
     //MARK: - Properties
 
     private let viewModel : LoginViewModel
+    private var disposeBag = DisposeBag()
     
     //MARK: - UI
     
     private let titleLabel = UILabel().then {
         $0.text = "앱을 시작하기 위해서,\n깃허브 로그인을 부탁드리겠습니다."
         $0.font = .systemFont(ofSize: 15,weight: .bold)
+        $0.numberOfLines = 0
+        $0.textAlignment = .center
         $0.sizeToFit()
     }
     private let loginBtn = UIButton().then {
-        $0.setImage(UIImage(named: ""), for: .normal)
+        $0.setTitle("깃허브로 로그인", for: .normal)
+        $0.titleLabel?.font = .systemFont(ofSize: 20,weight: .bold)
+        $0.layer.cornerRadius = 8
+        $0.backgroundColor = .black
     }
     
     //MARK: - LifeCycle
@@ -41,10 +45,6 @@ final class LoginViewController: BaseViewController {
     
     //MARK: - Method
     
-    override func configure() {
-        
-    }
-    
     override func addView() {
         [titleLabel, loginBtn].forEach {
             self.view.addSubview($0)
@@ -53,18 +53,26 @@ final class LoginViewController: BaseViewController {
 
     override func layout() {
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(40)
-            $0.centerX.equalToSuperview()
+            $0.centerX.centerY.equalToSuperview()
         }
         loginBtn.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(10)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(42)
         }
     }
     
     override func binding() {
+        let input = LoginViewModel.Input(loginTap: loginBtn.rx.tap.asSignal(), viewWillAppear: self.rx.viewWillAppear.asSignal())
+        let output = viewModel.transform(input: input)
         
+        output.url
+            .observe(on: MainScheduler.instance)
+            .compactMap { $0 }
+            .subscribe(onNext: {  url in
+                UIApplication.shared.open(url)
+            })
+            .disposed(by: disposeBag)
     }
 }
 // MARK: - Extension

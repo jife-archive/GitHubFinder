@@ -18,7 +18,8 @@ final class AppCoordinator: Coordinator {
     var navigationController: UINavigationController
     
     func start() {
-        let coordinator = SearchCoordinator(paraentCoordinator: self, navigationController: navigationController)
+        let coordinator = LoginCoordinator(paraentCoordinator: self, navigationController: navigationController)
+        childCoordinators.append(coordinator)
         coordinator.start()
     }
 }

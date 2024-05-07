@@ -14,4 +14,5 @@ import RxSwift
 class SearchService {
     private let disposeBag = DisposeBag()
     private let provider = MoyaProvider<GithubSearchTarget>()
+    
 }

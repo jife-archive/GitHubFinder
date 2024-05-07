@@ -16,8 +16,16 @@ final class LoginCoordinator: Coordinator {
     var delegate: CoordinatorDelegate?
     
     func start() {
-        let vc = LoginViewController(viewModel: LoginViewModel())
+        let vm = LoginViewModel(coordinator: self, serivce: LoginService(), urlConstants: UrlConstants())
+        let vc = LoginViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func pushMain() {
+        let coordinator = SearchCoordinator(navigationController: navigationController)
+        navigationController.isNavigationBarHidden = true
+        childCoordinators.append(coordinator)
+        coordinator.start()
     }
     
     init(paraentCoordinator: AppCoordinator?, navigationController: UINavigationController) {

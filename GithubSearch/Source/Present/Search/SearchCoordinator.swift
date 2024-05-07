@@ -16,11 +16,11 @@ final class SearchCoordinator: Coordinator {
     var delegate: CoordinatorDelegate?
     
     func start() {
-        let vc = SearchViewController()
+        let vc = SearchViewController(viewModel: SearchViewModel())
         navigationController.pushViewController(vc, animated: true)
     }
     
-    init(paraentCoordinator: AppCoordinator?, navigationController: UINavigationController) {
+    init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
 }

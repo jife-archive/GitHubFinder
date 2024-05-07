@@ -9,12 +9,27 @@
 /* Begin PBXBuildFile section */
 		DE2A97BF2BE9F7FD00D04534 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A97BE2BE9F7FD00D04534 /* AppDelegate.swift */; };
 		DE2A97C12BE9F7FD00D04534 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A97C02BE9F7FD00D04534 /* SceneDelegate.swift */; };
-		DE2A97C32BE9F7FD00D04534 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A97C22BE9F7FD00D04534 /* ViewController.swift */; };
+		DE2A97C32BE9F7FD00D04534 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A97C22BE9F7FD00D04534 /* SearchViewController.swift */; };
 		DE2A97C82BE9F80000D04534 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE2A97C72BE9F80000D04534 /* Assets.xcassets */; };
 		DE2A97CB2BE9F80000D04534 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE2A97C92BE9F80000D04534 /* LaunchScreen.storyboard */; };
 		DE2A97D62BE9F80000D04534 /* GithubSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A97D52BE9F80000D04534 /* GithubSearchTests.swift */; };
 		DE2A97E02BE9F80000D04534 /* GithubSearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A97DF2BE9F80000D04534 /* GithubSearchUITests.swift */; };
 		DE2A97E22BE9F80000D04534 /* GithubSearchUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A97E12BE9F80000D04534 /* GithubSearchUITestsLaunchTests.swift */; };
+		DE2A97F42BE9FA0D00D04534 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A97F32BE9FA0D00D04534 /* ViewModelType.swift */; };
+		DE2A97F82BE9FBF400D04534 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A97F72BE9FBF400D04534 /* SearchViewModel.swift */; };
+		DE2A98002BE9FD7700D04534 /* tempService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A97FF2BE9FD7700D04534 /* tempService.swift */; };
+		DE2A98022BE9FD7D00D04534 /* tempDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A98012BE9FD7D00D04534 /* tempDTO.swift */; };
+		DE2A98052BE9FF4D00D04534 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DE2A98042BE9FF4D00D04534 /* CombineMoya */; };
+		DE2A98072BE9FF4D00D04534 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = DE2A98062BE9FF4D00D04534 /* Moya */; };
+		DE2A98092BE9FF4D00D04534 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DE2A98082BE9FF4D00D04534 /* ReactiveMoya */; };
+		DE2A980B2BE9FF4D00D04534 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DE2A980A2BE9FF4D00D04534 /* RxMoya */; };
+		DE2A980E2BE9FF7800D04534 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = DE2A980D2BE9FF7800D04534 /* Then */; };
+		DE2A98112BE9FF8F00D04534 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DE2A98102BE9FF8F00D04534 /* SnapKit */; };
+		DE2A98142BE9FFAF00D04534 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A98132BE9FFAF00D04534 /* BaseViewController.swift */; };
+		DE2A98172BEA002100D04534 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = DE2A98162BEA002100D04534 /* RxBlocking */; };
+		DE2A98192BEA002100D04534 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = DE2A98182BEA002100D04534 /* RxCocoa */; };
+		DE2A981B2BEA002100D04534 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = DE2A981A2BEA002100D04534 /* RxRelay */; };
+		DE2A981E2BEA017B00D04534 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A981D2BEA017A00D04534 /* UserDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +53,7 @@
 		DE2A97BB2BE9F7FD00D04534 /* GithubSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE2A97BE2BE9F7FD00D04534 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE2A97C02BE9F7FD00D04534 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DE2A97C22BE9F7FD00D04534 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DE2A97C22BE9F7FD00D04534 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		DE2A97C72BE9F80000D04534 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE2A97CA2BE9F80000D04534 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE2A97CC2BE9F80000D04534 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +62,12 @@
 		DE2A97DB2BE9F80000D04534 /* GithubSearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GithubSearchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE2A97DF2BE9F80000D04534 /* GithubSearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSearchUITests.swift; sourceTree = "<group>"; };
 		DE2A97E12BE9F80000D04534 /* GithubSearchUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSearchUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DE2A97F32BE9FA0D00D04534 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		DE2A97F72BE9FBF400D04534 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		DE2A97FF2BE9FD7700D04534 /* tempService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempService.swift; sourceTree = "<group>"; };
+		DE2A98012BE9FD7D00D04534 /* tempDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempDTO.swift; sourceTree = "<group>"; };
+		DE2A98132BE9FFAF00D04534 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		DE2A981D2BEA017A00D04534 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +75,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE2A981B2BEA002100D04534 /* RxRelay in Frameworks */,
+				DE2A980E2BE9FF7800D04534 /* Then in Frameworks */,
+				DE2A98072BE9FF4D00D04534 /* Moya in Frameworks */,
+				DE2A98052BE9FF4D00D04534 /* CombineMoya in Frameworks */,
+				DE2A98112BE9FF8F00D04534 /* SnapKit in Frameworks */,
+				DE2A980B2BE9FF4D00D04534 /* RxMoya in Frameworks */,
+				DE2A98092BE9FF4D00D04534 /* ReactiveMoya in Frameworks */,
+				DE2A98192BEA002100D04534 /* RxCocoa in Frameworks */,
+				DE2A98172BEA002100D04534 /* RxBlocking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,12 +127,9 @@
 		DE2A97BD2BE9F7FD00D04534 /* GithubSearch */ = {
 			isa = PBXGroup;
 			children = (
-				DE2A97BE2BE9F7FD00D04534 /* AppDelegate.swift */,
-				DE2A97C02BE9F7FD00D04534 /* SceneDelegate.swift */,
-				DE2A97C22BE9F7FD00D04534 /* ViewController.swift */,
-				DE2A97C72BE9F80000D04534 /* Assets.xcassets */,
-				DE2A97C92BE9F80000D04534 /* LaunchScreen.storyboard */,
-				DE2A97CC2BE9F80000D04534 /* Info.plist */,
+				DE2A97F02BE9F9DF00D04534 /* Source */,
+				DE2A97EF2BE9F9C100D04534 /* Resource */,
+				DE2A97EE2BE9F9B800D04534 /* App */,
 			);
 			path = GithubSearch;
 			sourceTree = "<group>";
@@ -124,6 +151,103 @@
 			path = GithubSearchUITests;
 			sourceTree = "<group>";
 		};
+		DE2A97EE2BE9F9B800D04534 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				DE2A97CC2BE9F80000D04534 /* Info.plist */,
+				DE2A97BE2BE9F7FD00D04534 /* AppDelegate.swift */,
+				DE2A97C02BE9F7FD00D04534 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		DE2A97EF2BE9F9C100D04534 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				DE2A97C72BE9F80000D04534 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		DE2A97F02BE9F9DF00D04534 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				DE2A97F22BE9FA0300D04534 /* Protocol */,
+				DE2A97FE2BE9FD6F00D04534 /* Network */,
+				DE2A97F92BE9FC0700D04534 /* Models */,
+				DE2A97F52BE9FA2D00D04534 /* Present */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		DE2A97F12BE9F9EA00D04534 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				DE2A97C92BE9F80000D04534 /* LaunchScreen.storyboard */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		DE2A97F22BE9FA0300D04534 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				DE2A97F32BE9FA0D00D04534 /* ViewModelType.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		DE2A97F52BE9FA2D00D04534 /* Present */ = {
+			isa = PBXGroup;
+			children = (
+				DE2A98122BE9FF9E00D04534 /* Base */,
+				DE2A97F12BE9F9EA00D04534 /* Splash */,
+				DE2A97F62BE9FBE100D04534 /* Search */,
+				DE2A981C2BEA015300D04534 /* UserDetail */,
+			);
+			path = Present;
+			sourceTree = "<group>";
+		};
+		DE2A97F62BE9FBE100D04534 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				DE2A97C22BE9F7FD00D04534 /* SearchViewController.swift */,
+				DE2A97F72BE9FBF400D04534 /* SearchViewModel.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		DE2A97F92BE9FC0700D04534 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DE2A98012BE9FD7D00D04534 /* tempDTO.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DE2A97FE2BE9FD6F00D04534 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				DE2A97FF2BE9FD7700D04534 /* tempService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		DE2A98122BE9FF9E00D04534 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				DE2A98132BE9FFAF00D04534 /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		DE2A981C2BEA015300D04534 /* UserDetail */ = {
+			isa = PBXGroup;
+			children = (
+				DE2A981D2BEA017A00D04534 /* UserDetailViewController.swift */,
+			);
+			path = UserDetail;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,6 +264,17 @@
 			dependencies = (
 			);
 			name = GithubSearch;
+			packageProductDependencies = (
+				DE2A98042BE9FF4D00D04534 /* CombineMoya */,
+				DE2A98062BE9FF4D00D04534 /* Moya */,
+				DE2A98082BE9FF4D00D04534 /* ReactiveMoya */,
+				DE2A980A2BE9FF4D00D04534 /* RxMoya */,
+				DE2A980D2BE9FF7800D04534 /* Then */,
+				DE2A98102BE9FF8F00D04534 /* SnapKit */,
+				DE2A98162BEA002100D04534 /* RxBlocking */,
+				DE2A98182BEA002100D04534 /* RxCocoa */,
+				DE2A981A2BEA002100D04534 /* RxRelay */,
+			);
 			productName = GithubSearch;
 			productReference = DE2A97BB2BE9F7FD00D04534 /* GithubSearch.app */;
 			productType = "com.apple.product-type.application";
@@ -212,6 +347,12 @@
 				Base,
 			);
 			mainGroup = DE2A97B22BE9F7FD00D04534;
+			packageReferences = (
+				DE2A98032BE9FF4D00D04534 /* XCRemoteSwiftPackageReference "Moya" */,
+				DE2A980C2BE9FF7800D04534 /* XCRemoteSwiftPackageReference "Then" */,
+				DE2A980F2BE9FF8F00D04534 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				DE2A98152BEA002100D04534 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = DE2A97BC2BE9F7FD00D04534 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -254,7 +395,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE2A97C32BE9F7FD00D04534 /* ViewController.swift in Sources */,
+				DE2A97F42BE9FA0D00D04534 /* ViewModelType.swift in Sources */,
+				DE2A98022BE9FD7D00D04534 /* tempDTO.swift in Sources */,
+				DE2A981E2BEA017B00D04534 /* UserDetailViewController.swift in Sources */,
+				DE2A98002BE9FD7700D04534 /* tempService.swift in Sources */,
+				DE2A97F82BE9FBF400D04534 /* SearchViewModel.swift in Sources */,
+				DE2A97C32BE9F7FD00D04534 /* SearchViewController.swift in Sources */,
+				DE2A98142BE9FFAF00D04534 /* BaseViewController.swift in Sources */,
 				DE2A97BF2BE9F7FD00D04534 /* AppDelegate.swift in Sources */,
 				DE2A97C12BE9F7FD00D04534 /* SceneDelegate.swift in Sources */,
 			);
@@ -589,6 +736,89 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DE2A98032BE9FF4D00D04534 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
+		DE2A980C2BE9FF7800D04534 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		DE2A980F2BE9FF8F00D04534 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		DE2A98152BEA002100D04534 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DE2A98042BE9FF4D00D04534 /* CombineMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE2A98032BE9FF4D00D04534 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = CombineMoya;
+		};
+		DE2A98062BE9FF4D00D04534 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE2A98032BE9FF4D00D04534 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		DE2A98082BE9FF4D00D04534 /* ReactiveMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE2A98032BE9FF4D00D04534 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = ReactiveMoya;
+		};
+		DE2A980A2BE9FF4D00D04534 /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE2A98032BE9FF4D00D04534 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
+		};
+		DE2A980D2BE9FF7800D04534 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE2A980C2BE9FF7800D04534 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		DE2A98102BE9FF8F00D04534 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE2A980F2BE9FF8F00D04534 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		DE2A98162BEA002100D04534 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE2A98152BEA002100D04534 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		DE2A98182BEA002100D04534 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE2A98152BEA002100D04534 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		DE2A981A2BEA002100D04534 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE2A98152BEA002100D04534 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DE2A97B32BE9F7FD00D04534 /* Project object */;
 }

@@ -1,5 +1,5 @@
 //
-//  SearchViewModel.swift
+//  LoginViewModel.swift
 //  GithubSearch
 //
 //  Created by Choi on 5/7/24.
@@ -8,7 +8,7 @@
 import RxSwift
 import RxCocoa
 
-final class SearchViewModel: ViewModelType {
+final class LoginViewModel: ViewModelType {
     
     var disposeBag = DisposeBag()
 

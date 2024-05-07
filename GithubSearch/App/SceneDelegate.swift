@@ -10,13 +10,26 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    var appCoordinator: (any Coordinator)?
+    let navigaitonController = UINavigationController()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: windowScene)
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: windowScene)
+        //        let vm = GemViewModel(usecase: EpisodeUseCase(epiRepository: EpisodeRepository(service: EpisodeService()), gemRepository: GemRepository(service: GemService())), id: 0, gemUsecase: JewelryUseCase(repositoy: GemRepository(service: GemService())), coordinator: GemCoordinator(navigationController: navigaitonController))
+        //        let vc = GemViewController(viewModel: vm)
+        /*IntroViewController(viewModel: IntroViewModel(introUseCase: IntroUseCase())) // 맨 처음 보여줄 ViewController*/
+        appCoordinator = AppCoordinator(navigationController: navigaitonController)
+        appCoordinator?.start()
+    
+        window?.rootViewController = navigaitonController
+        window!.windowScene = windowScene
+        window?.makeKeyAndVisible()
+
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

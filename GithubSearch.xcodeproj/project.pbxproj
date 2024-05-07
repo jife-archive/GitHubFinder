@@ -17,7 +17,7 @@
 		DE2A97E22BE9F80000D04534 /* GithubSearchUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A97E12BE9F80000D04534 /* GithubSearchUITestsLaunchTests.swift */; };
 		DE2A97F42BE9FA0D00D04534 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A97F32BE9FA0D00D04534 /* ViewModelType.swift */; };
 		DE2A97F82BE9FBF400D04534 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A97F72BE9FBF400D04534 /* SearchViewModel.swift */; };
-		DE2A98002BE9FD7700D04534 /* tempService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A97FF2BE9FD7700D04534 /* tempService.swift */; };
+		DE2A98002BE9FD7700D04534 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A97FF2BE9FD7700D04534 /* SearchService.swift */; };
 		DE2A98022BE9FD7D00D04534 /* tempDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A98012BE9FD7D00D04534 /* tempDTO.swift */; };
 		DE2A98052BE9FF4D00D04534 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DE2A98042BE9FF4D00D04534 /* CombineMoya */; };
 		DE2A98072BE9FF4D00D04534 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = DE2A98062BE9FF4D00D04534 /* Moya */; };
@@ -30,6 +30,13 @@
 		DE2A98192BEA002100D04534 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = DE2A98182BEA002100D04534 /* RxCocoa */; };
 		DE2A981B2BEA002100D04534 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = DE2A981A2BEA002100D04534 /* RxRelay */; };
 		DE2A981E2BEA017B00D04534 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A981D2BEA017A00D04534 /* UserDetailViewController.swift */; };
+		DE2A98202BEA01CA00D04534 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A981F2BEA01CA00D04534 /* EndPoint.swift */; };
+		DE2A98222BEA09B900D04534 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A98212BEA09B900D04534 /* Coordinator.swift */; };
+		DE2A98242BEA09DE00D04534 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A98232BEA09DE00D04534 /* AppCoordinator.swift */; };
+		DE2A98262BEA0CBD00D04534 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A98252BEA0CBD00D04534 /* SearchCoordinator.swift */; };
+		DE2A98292BEA13F100D04534 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A98282BEA13F100D04534 /* LoginViewController.swift */; };
+		DE2A982B2BEA144100D04534 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A982A2BEA144100D04534 /* LoginCoordinator.swift */; };
+		DE2A982D2BEA144900D04534 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A982C2BEA144900D04534 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,10 +71,17 @@
 		DE2A97E12BE9F80000D04534 /* GithubSearchUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSearchUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DE2A97F32BE9FA0D00D04534 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		DE2A97F72BE9FBF400D04534 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
-		DE2A97FF2BE9FD7700D04534 /* tempService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempService.swift; sourceTree = "<group>"; };
+		DE2A97FF2BE9FD7700D04534 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		DE2A98012BE9FD7D00D04534 /* tempDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempDTO.swift; sourceTree = "<group>"; };
 		DE2A98132BE9FFAF00D04534 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		DE2A981D2BEA017A00D04534 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		DE2A981F2BEA01CA00D04534 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		DE2A98212BEA09B900D04534 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		DE2A98232BEA09DE00D04534 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		DE2A98252BEA0CBD00D04534 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
+		DE2A98282BEA13F100D04534 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		DE2A982A2BEA144100D04534 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		DE2A982C2BEA144900D04534 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +141,7 @@
 		DE2A97BD2BE9F7FD00D04534 /* GithubSearch */ = {
 			isa = PBXGroup;
 			children = (
+				DE2A97CC2BE9F80000D04534 /* Info.plist */,
 				DE2A97F02BE9F9DF00D04534 /* Source */,
 				DE2A97EF2BE9F9C100D04534 /* Resource */,
 				DE2A97EE2BE9F9B800D04534 /* App */,
@@ -154,9 +169,9 @@
 		DE2A97EE2BE9F9B800D04534 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				DE2A97CC2BE9F80000D04534 /* Info.plist */,
 				DE2A97BE2BE9F7FD00D04534 /* AppDelegate.swift */,
 				DE2A97C02BE9F7FD00D04534 /* SceneDelegate.swift */,
+				DE2A98232BEA09DE00D04534 /* AppCoordinator.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -192,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				DE2A97F32BE9FA0D00D04534 /* ViewModelType.swift */,
+				DE2A98212BEA09B900D04534 /* Coordinator.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -201,6 +217,7 @@
 			children = (
 				DE2A98122BE9FF9E00D04534 /* Base */,
 				DE2A97F12BE9F9EA00D04534 /* Splash */,
+				DE2A98272BEA13E700D04534 /* Login */,
 				DE2A97F62BE9FBE100D04534 /* Search */,
 				DE2A981C2BEA015300D04534 /* UserDetail */,
 			);
@@ -212,6 +229,7 @@
 			children = (
 				DE2A97C22BE9F7FD00D04534 /* SearchViewController.swift */,
 				DE2A97F72BE9FBF400D04534 /* SearchViewModel.swift */,
+				DE2A98252BEA0CBD00D04534 /* SearchCoordinator.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -227,7 +245,8 @@
 		DE2A97FE2BE9FD6F00D04534 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				DE2A97FF2BE9FD7700D04534 /* tempService.swift */,
+				DE2A97FF2BE9FD7700D04534 /* SearchService.swift */,
+				DE2A981F2BEA01CA00D04534 /* EndPoint.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -246,6 +265,16 @@
 				DE2A981D2BEA017A00D04534 /* UserDetailViewController.swift */,
 			);
 			path = UserDetail;
+			sourceTree = "<group>";
+		};
+		DE2A98272BEA13E700D04534 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				DE2A98282BEA13F100D04534 /* LoginViewController.swift */,
+				DE2A982A2BEA144100D04534 /* LoginCoordinator.swift */,
+				DE2A982C2BEA144900D04534 /* LoginViewModel.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,13 +424,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE2A98292BEA13F100D04534 /* LoginViewController.swift in Sources */,
+				DE2A98242BEA09DE00D04534 /* AppCoordinator.swift in Sources */,
+				DE2A98262BEA0CBD00D04534 /* SearchCoordinator.swift in Sources */,
 				DE2A97F42BE9FA0D00D04534 /* ViewModelType.swift in Sources */,
+				DE2A982D2BEA144900D04534 /* LoginViewModel.swift in Sources */,
 				DE2A98022BE9FD7D00D04534 /* tempDTO.swift in Sources */,
+				DE2A98202BEA01CA00D04534 /* EndPoint.swift in Sources */,
 				DE2A981E2BEA017B00D04534 /* UserDetailViewController.swift in Sources */,
-				DE2A98002BE9FD7700D04534 /* tempService.swift in Sources */,
+				DE2A98002BE9FD7700D04534 /* SearchService.swift in Sources */,
 				DE2A97F82BE9FBF400D04534 /* SearchViewModel.swift in Sources */,
+				DE2A98222BEA09B900D04534 /* Coordinator.swift in Sources */,
 				DE2A97C32BE9F7FD00D04534 /* SearchViewController.swift in Sources */,
 				DE2A98142BE9FFAF00D04534 /* BaseViewController.swift in Sources */,
+				DE2A982B2BEA144100D04534 /* LoginCoordinator.swift in Sources */,
 				DE2A97BF2BE9F7FD00D04534 /* AppDelegate.swift in Sources */,
 				DE2A97C12BE9F7FD00D04534 /* SceneDelegate.swift in Sources */,
 			);
@@ -582,8 +618,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -609,8 +644,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

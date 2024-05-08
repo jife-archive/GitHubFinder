@@ -20,14 +20,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         window = UIWindow(windowScene: windowScene)
-        //        let vm = GemViewModel(usecase: EpisodeUseCase(epiRepository: EpisodeRepository(service: EpisodeService()), gemRepository: GemRepository(service: GemService())), id: 0, gemUsecase: JewelryUseCase(repositoy: GemRepository(service: GemService())), coordinator: GemCoordinator(navigationController: navigaitonController))
-        //        let vc = GemViewController(viewModel: vm)
-        /*IntroViewController(viewModel: IntroViewModel(introUseCase: IntroUseCase())) // 맨 처음 보여줄 ViewController*/
-        appCoordinator = AppCoordinator(navigationController: navigaitonController)
-        appCoordinator?.start()
+        window!.windowScene = windowScene
+
+
+        if TokenManager.shared.isTokenValid() {
+            // 토큰이 유효한 경우, 메인 화면으로 직접 이동
+            appCoordinator = SearchCoordinator(navigationController: navigaitonController)
+            appCoordinator?.start()
+        } else {
+            // 토큰이 유효하지 않은 경우, 로그인 화면으로 이동
+            appCoordinator = AppCoordinator(navigationController: navigaitonController)
+            appCoordinator?.start()
+        }
     
         window?.rootViewController = navigaitonController
-        window!.windowScene = windowScene
         window?.makeKeyAndVisible()
 
     }

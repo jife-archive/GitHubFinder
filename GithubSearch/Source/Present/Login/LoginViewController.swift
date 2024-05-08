@@ -63,7 +63,7 @@ final class LoginViewController: BaseViewController {
     }
     
     override func binding() {
-        let input = LoginViewModel.Input(loginTap: loginBtn.rx.tap.asSignal(), viewWillAppear: self.rx.viewWillAppear.asSignal())
+        let input = LoginViewModel.Input(loginTap: loginBtn.rx.tap.asSignal())
         let output = viewModel.transform(input: input)
         
         output.url
@@ -75,5 +75,3 @@ final class LoginViewController: BaseViewController {
             .disposed(by: disposeBag)
     }
 }
-// MARK: - Extension
-

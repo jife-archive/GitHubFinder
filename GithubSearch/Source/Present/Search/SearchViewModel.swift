@@ -16,7 +16,8 @@ final class SearchViewModel: ViewModelType {
     private let service: SearchService
     weak var coordinator: SearchCoordinator?
     var disposeBag = DisposeBag()
-    
+    private let userInfoUrl = PublishSubject<URL?>()
+
     // MARK: - Init
 
     init(service: SearchService, coordinator: SearchCoordinator?) {
@@ -27,7 +28,7 @@ final class SearchViewModel: ViewModelType {
     // MARK: - In & Output
 
     struct Input {
-        let viewWillAppear: Signal<Void>
+        let viewDidLoad: Signal<Void>
         let didSelectRowAt: Signal<String>
     }
     
@@ -38,6 +39,19 @@ final class SearchViewModel: ViewModelType {
     // MARK: - Method
 
     func transform(input: Input) -> Output {
-        Output(url: <#Observable<URL?>#>)
+        input.didSelectRowAt
+            .emit(onNext: { [weak self] res in
+                let url = URL(string: res)
+                self?.userInfoUrl.onNext(url)
+            })
+            .disposed(by: disposeBag)
+        
+        input.viewDidLoad
+            .emit(onNext: {  [weak self]  _ in
+                
+            })
+            .disposed(by: disposeBag)
+        
+        return Output(url: userInfoUrl)
     }
 }

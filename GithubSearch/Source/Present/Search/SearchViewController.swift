@@ -36,6 +36,10 @@ final class SearchViewController: BaseViewController {
         $0.register(UserListTableViewCell.self, forCellReuseIdentifier: UserListTableViewCell.identifier)
         $0.separatorInset = .zero
     }
+    private let clearBtn = UIButton().then {
+        $0.isHidden = true
+        $0.setImage(UIImage(systemName: "xmark.circle"), for: .normal)
+    }
     
     //MARK: - LifeCycle
 
@@ -80,6 +84,9 @@ final class SearchViewController: BaseViewController {
     }
     
     override func binding() {
+        let input = SearchViewModel.Input(viewDidLoad: self.rx.viewWillAppear.asSignal(), didSelectRowAt: userInfoTableView.rx.modelSelected(String.self).asSignal())
+        let output = viewModel.transform(input: input)
+        
         Observable.just([1,2,3])
             .bind(to: userInfoTableView.rx.items(cellIdentifier: UserListTableViewCell.identifier, cellType: UserListTableViewCell.self))
         {  index, item, cell in

@@ -16,7 +16,7 @@ final class SearchCoordinator: Coordinator {
     var delegate: CoordinatorDelegate?
     
     func start() {
-        let vc = SearchViewController(viewModel: SearchViewModel())
+        let vc = SearchViewController(viewModel: SearchViewModel(service: SearchService(), coordinator: self))
         navigationController.pushViewController(vc, animated: true)
     }
     

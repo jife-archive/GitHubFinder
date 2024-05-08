@@ -7,14 +7,14 @@
 
 import Foundation
 
-final class TokenManager {
+final class TokenManager { /// 싱글톤 패턴으로 토큰을 관리하는 클래스입니다.
     static let shared = TokenManager()
 
     private let userDefaults = UserDefaults.standard
     private let tokenKey = "accessToken"
     private let codeKey = "code"
     
-    private init() {}  
+    private init() {}
 
     func saveCodeKey(_ code: String) {
         userDefaults.set(code, forKey: codeKey)
@@ -34,6 +34,10 @@ final class TokenManager {
 
     func clearToken() {
         userDefaults.removeObject(forKey: tokenKey)
+    }
+    
+    func isTokenValid() -> Bool {
+        return getToken() != nil
     }
 }
 

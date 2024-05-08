@@ -7,6 +7,7 @@
 
 import Foundation
 
+// AccesToken DTO
 struct AccessTokenDTO: Decodable {
     let access_token: String
 }

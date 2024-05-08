@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Kingfisher
+
 final class UserListTableViewCell: UITableViewCell {
     // MARK: - Properties
 
@@ -16,9 +18,11 @@ final class UserListTableViewCell: UITableViewCell {
 
     private let userImg = UIImageView().then {
         $0.image = UIImage(systemName: "square.and.arrow.up")
+        $0.contentMode = .scaleAspectFit
         $0.layer.cornerRadius = 15
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.darkGray.cgColor
+        $0.clipsToBounds = true
     }
     private let userNameLabel = UILabel().then {
         $0.text = "asdasdasdasdsad"
@@ -58,8 +62,12 @@ final class UserListTableViewCell: UITableViewCell {
         }
     }
     
-    func configure(name: String, url: String, img: UIImage) {
-        
+    func configure(name: String, url: String, img: String) {
+        self.userNameLabel.text = name
+        self.urlLabel.text = url
+        if let imageURL = URL(string: img) {
+            self.userImg.kf.setImage(with: imageURL)
+        }
     }
     // MARK: - Init
 

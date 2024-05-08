@@ -30,11 +30,11 @@ final class LoginViewModel: ViewModelType {
     // MARK: - In & Output
 
     struct Input {
-        let loginTap: Signal<Void>
+        let loginTap: Signal<Void> // 로그인 버튼 클릭 시
     }
     
     struct Output {
-        let url: Observable<URL?>
+        let url: Observable<URL?> // 깃허브 로그인 URL을 보여주는 변수
     }
     
     // MARK: - Method

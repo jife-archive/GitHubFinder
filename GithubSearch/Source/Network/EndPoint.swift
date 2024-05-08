@@ -15,7 +15,13 @@ enum GithubSearchTarget {
 }
 extension GithubSearchTarget: TargetType {
     var baseURL: URL {
-        return URL(string: "https://github.com/")!
+        switch self {
+        case .requestAccessToken:
+            return URL(string: "https://github.com/")!
+        case .search:
+            return URL(string: "https://api.github.com/")!
+
+        }
     }
     
     var path: String {
@@ -42,10 +48,10 @@ extension GithubSearchTarget: TargetType {
         case .search(let userName):
             var parameters: [String: Any] = [:]
             if let userName = userName {
-                parameters["userName"] = userName
+                parameters["q"] = userName
             }
-            return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
-            
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+
         case .requestAccessToken(let clientID, let clientSecret, let code):
             let parameters: [String: Any] = [
                 "client_id": clientID,
@@ -63,7 +69,8 @@ extension GithubSearchTarget: TargetType {
             return ["Accept": "application/json"]
         case .search:
             return ["Accept": "application/json",
-                    "Authorization": "token \()"
+                    "Authorization": "token \(TokenManager.shared.getToken() ?? "")",
+                    "X-GitHub-Api-Version" : "2022-11-28"
             ]
         }
     }

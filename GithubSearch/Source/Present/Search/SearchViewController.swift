@@ -24,11 +24,18 @@ final class SearchViewController: BaseViewController {
         $0.image = UIImage(systemName: "magnifyingglass")
         $0.tintColor = .black
     }
+    private let clearBtn = UIButton().then {
+        $0.isHidden = true
+        $0.setImage(UIImage(systemName: "xmark.circle"), for: .normal)
+        $0.tintColor = .black
+    }
     private let searchBar = UITextField().then {
         $0.placeholder = "찾으실 유저를 입력해주세요."
         $0.layer.cornerRadius = 8
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.darkGray.cgColor
+        $0.rightViewMode = .always
+        $0.autocapitalizationType = .none
         $0.addLeftPadding()
     }
     private let userInfoTableView = UITableView(frame: CGRect.zero, style: .grouped).then{
@@ -36,11 +43,7 @@ final class SearchViewController: BaseViewController {
         $0.register(UserListTableViewCell.self, forCellReuseIdentifier: UserListTableViewCell.identifier)
         $0.separatorInset = .zero
     }
-    private let clearBtn = UIButton().then {
-        $0.isHidden = true
-        $0.setImage(UIImage(systemName: "xmark.circle"), for: .normal)
-        $0.tintColor = .black
-    }
+
     
     //MARK: - LifeCycle
 
@@ -57,10 +60,11 @@ final class SearchViewController: BaseViewController {
     
     override func configure() {
         userInfoTableView.delegate = self
+        searchBar.rightView = clearBtn
     }
     
     override func addView() {
-        [searchImg, clearBtn].forEach {
+        [searchImg].forEach {
             searchBar.addSubview($0)
         }
         [searchBar, userInfoTableView].forEach {
@@ -80,9 +84,7 @@ final class SearchViewController: BaseViewController {
             $0.trailing.equalToSuperview().inset(12)
         }
         clearBtn.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
             $0.width.height.equalTo(25)
-            $0.trailing.equalToSuperview().inset(12)
         }
         userInfoTableView.snp.makeConstraints {
             $0.top.equalTo(searchBar.snp.bottom).offset(12)
@@ -93,10 +95,11 @@ final class SearchViewController: BaseViewController {
     
     override func binding() {
         let input = SearchViewModel.Input(
-            viewDidLoad: self.rx.viewWillAppear.asSignal(),
+            viewWillAppear: self.rx.viewWillAppear.asSignal(),
             inputText: searchBar.rx.text.orEmpty.asObservable(),  
             searchTapped: searchBar.rx.controlEvent(.editingDidEndOnExit).asSignal(),
-            didSelectRowAt: userInfoTableView.rx.modelSelected(String.self).asSignal()
+            didSelectRowAt: userInfoTableView.rx.modelSelected(String.self).asSignal(), 
+            clearTapped: clearBtn.rx.tap.asSignal()
         )
 
         let output = viewModel.transform(input: input)
@@ -109,10 +112,15 @@ final class SearchViewController: BaseViewController {
             .bind(to: searchImg.rx.isHidden)
             .disposed(by: disposeBag)
         
-        Observable.just([1,2,3])
-            .bind(to: userInfoTableView.rx.items(cellIdentifier: UserListTableViewCell.identifier, cellType: UserListTableViewCell.self))
+        output.searchText
+            .bind(to: searchBar.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.searchResult
+            .bind(to: userInfoTableView.rx.items(cellIdentifier: UserListTableViewCell.identifier,
+                                                 cellType: UserListTableViewCell.self))
         {  index, item, cell in
-            
+            cell.configure(name: item.name, url: item.url, img: item.imgURL)
         }
         .disposed(by: disposeBag)
     }

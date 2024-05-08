@@ -12,7 +12,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     var appCoordinator: (any Coordinator)?
     let navigaitonController = UINavigationController()
-    private let tokenManager = TokenManager()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -35,8 +34,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
          if let url = URLContexts.first?.url {
              let code = url.absoluteString.components(separatedBy: "code=").last ?? ""
-             tokenManager.saveCodeKey(code)
-             print(code)
+             TokenManager.shared.saveCodeKey(code)
          }
      }
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -59,10 +59,12 @@ extension GithubSearchTarget: TargetType {
     var headers: [String : String]? {
         switch self {
             
-        case .requestAccessToken(clientID: let clientID, clientSecret: let clientSecret, code: let code):
+        case .requestAccessToken:
             return ["Accept": "application/json"]
-        case .search(userName: let userName):
-            return ["Accept": "application/json"]
+        case .search:
+            return ["Accept": "application/json",
+                    "Authorization": "token \()"
+            ]
         }
     }
     

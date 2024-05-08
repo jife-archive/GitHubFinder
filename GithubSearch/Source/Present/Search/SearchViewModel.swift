@@ -29,12 +29,15 @@ final class SearchViewModel: ViewModelType {
 
     struct Input {
         let viewDidLoad: Signal<Void>
+        let inputText: Observable<String>
+        let searchTapped: Signal<Void>
         let didSelectRowAt: Signal<String>
     }
     
     struct Output {
-        let url: Observable<URL?>
-
+        let url: Observable<URL?> // 유저 클릭 시, 해당 유저의 깃허브 URL을 보여주는 변수
+        let clearBtnVisible: Observable<Bool> // Clear 버튼 가시성 제어하는 변수
+        let searchImgVisible: Observable<Bool> // 검색 돋보기 이미지 가시성 제어하는 변수
     }
     // MARK: - Method
 
@@ -52,6 +55,17 @@ final class SearchViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
         
-        return Output(url: userInfoUrl)
+        let clearBtnVisible = input.inputText
+            .map { $0.isEmpty }
+            .distinctUntilChanged()
+        
+        let searchImgVisible = clearBtnVisible
+            .map { !$0 }  // clearBtnVisible의 반대 값
+
+        
+        return Output(url: userInfoUrl,
+                      clearBtnVisible: clearBtnVisible,
+                      searchImgVisible: searchImgVisible
+        )
     }
 }

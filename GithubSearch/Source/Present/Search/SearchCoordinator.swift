@@ -20,6 +20,12 @@ final class SearchCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
+    func pushUserDetail(userName: String) {
+        let vc = UserDetailViewController()
+        navigationController.isNavigationBarHidden = false
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }

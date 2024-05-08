@@ -39,6 +39,7 @@ final class SearchViewController: BaseViewController {
     private let clearBtn = UIButton().then {
         $0.isHidden = true
         $0.setImage(UIImage(systemName: "xmark.circle"), for: .normal)
+        $0.tintColor = .black
     }
     
     //MARK: - LifeCycle
@@ -59,7 +60,9 @@ final class SearchViewController: BaseViewController {
     }
     
     override func addView() {
-        searchBar.addSubview(searchImg)
+        [searchImg, clearBtn].forEach {
+            searchBar.addSubview($0)
+        }
         [searchBar, userInfoTableView].forEach {
             self.view.addSubview($0)
         }
@@ -76,6 +79,11 @@ final class SearchViewController: BaseViewController {
             $0.width.height.equalTo(25)
             $0.trailing.equalToSuperview().inset(12)
         }
+        clearBtn.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.width.height.equalTo(25)
+            $0.trailing.equalToSuperview().inset(12)
+        }
         userInfoTableView.snp.makeConstraints {
             $0.top.equalTo(searchBar.snp.bottom).offset(12)
             $0.horizontalEdges.equalToSuperview().inset(20)
@@ -84,8 +92,22 @@ final class SearchViewController: BaseViewController {
     }
     
     override func binding() {
-        let input = SearchViewModel.Input(viewDidLoad: self.rx.viewWillAppear.asSignal(), didSelectRowAt: userInfoTableView.rx.modelSelected(String.self).asSignal())
+        let input = SearchViewModel.Input(
+            viewDidLoad: self.rx.viewWillAppear.asSignal(),
+            inputText: searchBar.rx.text.orEmpty.asObservable(),  
+            searchTapped: searchBar.rx.controlEvent(.editingDidEndOnExit).asSignal(),
+            didSelectRowAt: userInfoTableView.rx.modelSelected(String.self).asSignal()
+        )
+
         let output = viewModel.transform(input: input)
+        
+        output.clearBtnVisible
+            .bind(to: clearBtn.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        output.searchImgVisible
+            .bind(to: searchImg.rx.isHidden)
+            .disposed(by: disposeBag)
         
         Observable.just([1,2,3])
             .bind(to: userInfoTableView.rx.items(cellIdentifier: UserListTableViewCell.identifier, cellType: UserListTableViewCell.self))

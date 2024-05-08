@@ -19,7 +19,6 @@ final class LoginViewModel: ViewModelType {
     private let service: LoginService
     private let loginUrl = PublishSubject<URL?>()
     private let urlConstants: UrlConstants
-    private let tokenManager = TokenManager()
     
     // MARK: - Init
 
@@ -55,9 +54,9 @@ final class LoginViewModel: ViewModelType {
              .subscribe(on: MainScheduler.instance)
              .subscribe(onNext: { [weak self] _ in
                  guard let self = self else { return }
-                 self.service.fetchAccessToken(clientID: urlConstants.ClientId, clientSecret: urlConstants.ClientSId, code: tokenManager.getCodeKey() ?? "")
+                 self.service.fetchAccessToken(clientID: urlConstants.ClientId, clientSecret: urlConstants.ClientSId, code: TokenManager.shared.getCodeKey() ?? "")
                      .subscribe(onSuccess: { res in
-                         self.tokenManager.saveToken(res.access_token)
+                         TokenManager.shared.saveToken(res.access_token)
                          self.coordinator?.pushMain()
                      }, onFailure: { error in
                          print("Error fetching access token: \(error)")

@@ -7,11 +7,15 @@
 
 import Foundation
 
-final class TokenManager { /// 토큰을 싱글톤 패턴으로 관리하기 위한 클래스입니다.
+final class TokenManager {
+    static let shared = TokenManager()
+
     private let userDefaults = UserDefaults.standard
     private let tokenKey = "accessToken"
     private let codeKey = "code"
     
+    private init() {}  
+
     func saveCodeKey(_ code: String) {
         userDefaults.set(code, forKey: codeKey)
     }
@@ -32,3 +36,4 @@ final class TokenManager { /// 토큰을 싱글톤 패턴으로 관리하기 위
         userDefaults.removeObject(forKey: tokenKey)
     }
 }
+

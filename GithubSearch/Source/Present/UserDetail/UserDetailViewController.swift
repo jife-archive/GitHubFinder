@@ -6,24 +6,37 @@
 //
 
 import UIKit
+import WebKit
 
-class UserDetailViewController: UIViewController {
+import RxSwift
+import RxCocoa
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+final class UserDetailViewController: BaseViewController {
+    //MARK: - UI
+    
+    private let wkWebView = WKWebView()
+    
+    //MARK: - LifeCycle
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-    */
-
+    
+    //MARK: - Method
+    
+    override func addView() {
+        self.view.addSubview(wkWebView)
+    }
+    
+    override func layout() {
+        wkWebView.snp.makeConstraints {
+            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+        }
+    }
 }

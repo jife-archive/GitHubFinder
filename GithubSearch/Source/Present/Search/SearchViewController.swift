@@ -38,7 +38,10 @@ final class SearchViewController: BaseViewController {
         $0.autocapitalizationType = .none
         $0.addLeftPadding()
     }
-    private let userInfoTableView = UITableView(frame: CGRect.zero, style: .grouped).then{
+    private let emptyView = EmptyView().then {
+        $0.isHidden = true
+    }
+    private let userInfoTableView = UITableView(frame: CGRect.zero, style: .plain).then{
         $0.backgroundColor = .clear
         $0.register(UserListTableViewCell.self, forCellReuseIdentifier: UserListTableViewCell.identifier)
         $0.separatorInset = .zero
@@ -64,12 +67,11 @@ final class SearchViewController: BaseViewController {
     }
     
     override func addView() {
-        [searchImg].forEach {
-            searchBar.addSubview($0)
-        }
+        searchBar.addSubview(searchImg)
         [searchBar, userInfoTableView].forEach {
             self.view.addSubview($0)
         }
+        userInfoTableView.addSubview(emptyView)
     }
 
     override func layout() {
@@ -88,8 +90,11 @@ final class SearchViewController: BaseViewController {
         }
         userInfoTableView.snp.makeConstraints {
             $0.top.equalTo(searchBar.snp.bottom).offset(12)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(12)
+        }
+        emptyView.snp.makeConstraints {
+            $0.center.equalToSuperview()
         }
     }
     
@@ -98,7 +103,7 @@ final class SearchViewController: BaseViewController {
             viewWillAppear: self.rx.viewWillAppear.asSignal(),
             inputText: searchBar.rx.text.orEmpty.asObservable(),  
             searchTapped: searchBar.rx.controlEvent(.editingDidEndOnExit).asSignal(),
-            didSelectRowAt: userInfoTableView.rx.modelSelected(String.self).asSignal(), 
+            didSelectRowAt: userInfoTableView.rx.modelSelected(UserInfo.self).asSignal(), 
             clearTapped: clearBtn.rx.tap.asSignal()
         )
 
@@ -123,6 +128,11 @@ final class SearchViewController: BaseViewController {
             cell.configure(name: item.name, url: item.url, img: item.imgURL)
         }
         .disposed(by: disposeBag)
+        
+        output.totalSearchCount
+            .map { $0 != 0 }
+            .bind(to: emptyView.rx.isHidden)
+            .disposed(by: disposeBag)
     }
 }
 // MARK: - Extension

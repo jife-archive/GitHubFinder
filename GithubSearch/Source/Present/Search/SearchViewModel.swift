@@ -19,6 +19,7 @@ final class SearchViewModel: ViewModelType {
     private let userInfoUrl = PublishSubject<URL?>()
     private let searchResults = PublishSubject<[UserInfo]>()
     private let textInput = BehaviorSubject<String>(value: "")
+    private let totalUserCount = PublishSubject<Int>()
     
     // MARK: - Init
 
@@ -33,7 +34,7 @@ final class SearchViewModel: ViewModelType {
         let viewWillAppear: Signal<Void>  // 뷰 생명주기 ViewWillAppear
         let inputText: Observable<String>  // 검색바의 텍스트 입력 시,
         let searchTapped: Signal<Void>   //  검색 버튼 클릭 시,
-        let didSelectRowAt: Signal<String>  // 유저 리스트 클릭시,
+        let didSelectRowAt: Signal<UserInfo>  // 유저 리스트 클릭시,
         let clearTapped: Signal<Void>  // Clear버튼 클릭 시,
     }
     
@@ -43,6 +44,7 @@ final class SearchViewModel: ViewModelType {
         let searchImgVisible: Observable<Bool> // 검색 돋보기 이미지 가시성 제어하는 변수
         let searchText: Observable<String>  // 검색 텍스트 바인딩용 Observable
         let searchResult: Observable<[UserInfo]>  // 검색 결과를 보여주는 변수
+        let totalSearchCount: Observable<Int>  // 검색된 총 유저의 수를 보여주는 변수
     }
     // MARK: - Method
 
@@ -75,8 +77,8 @@ final class SearchViewModel: ViewModelType {
         let searchTrigger = input.searchTapped
             .asObservable()
             .withLatestFrom(input.inputText)
-        
-        searchTrigger // 검색 버튼의 입력을 감지하고 API 요청하는 로직
+                
+        searchTrigger /// 검색 버튼의 입력을 감지하고 API 요청하는 로직입니다.
             .flatMapLatest { [weak self] text -> Observable<UserListDTO> in
                 guard let self = self else { return Observable.empty() }
                 return self.service.fetchUserList(userName: text)
@@ -84,6 +86,7 @@ final class SearchViewModel: ViewModelType {
             }
             .subscribe(onNext: {  [weak self] userListDTO in
                 self?.searchResults.onNext(userListDTO.items)
+                self?.totalUserCount.onNext(userListDTO.totalCount)
             })
             .disposed(by: disposeBag)
         
@@ -98,7 +101,8 @@ final class SearchViewModel: ViewModelType {
                       clearBtnVisible: clearBtnVisible,
                       searchImgVisible: searchImgVisible, 
                       searchText: textInput.asObservable(), 
-                      searchResult: searchResults
+                      searchResult: searchResults, 
+                      totalSearchCount: totalUserCount
         )
     }
 }

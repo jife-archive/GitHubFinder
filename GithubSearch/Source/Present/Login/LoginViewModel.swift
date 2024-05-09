@@ -47,25 +47,20 @@ final class LoginViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
         
-        NotificationCenter
-             .default
-             .rx
-             .notification(UIApplication.willEnterForegroundNotification)
-             .subscribe(on: MainScheduler.instance)
-             .subscribe(onNext: { [weak self] _ in
-                 guard let self = self else { return }
-                 self.service.fetchAccessToken(clientID: urlConstants.ClientId, clientSecret: urlConstants.ClientSId, code: TokenManager.shared.getCodeKey() ?? "")
-                     .subscribe(onSuccess: { res in
-                         TokenManager.shared.saveToken(res.access_token)
-                         self.coordinator?.pushMain()
-                     }, onFailure: { error in
-                         print("Error fetching access token: \(error)")
-                     })
-                     .disposed(by: self.disposeBag)
-             })
-             .disposed(by: self.disposeBag)
+        NotificationCenter.default.rx.notification(UIApplication.willEnterForegroundNotification) /// 깃헙 로그인 후, 받은 code를 바탕으로 OAuth를 요청하는 로직입니다.
+            .observe(on: MainScheduler.instance)
+            .flatMapLatest { [weak self] _ -> Single<AccessTokenDTO> in
+                guard let self = self else { return .error(RxError.noElements) }
+                return self.service.fetchAccessToken(clientID: self.urlConstants.ClientId, clientSecret: self.urlConstants.ClientSId, code: TokenManager.shared.getCodeKey() ?? "")
+            }
+            .subscribe(onNext: { accessToken in
+                TokenManager.shared.saveToken(accessToken.access_token)
+                self.coordinator?.pushMain()
+            }, onError: { error in
+                print("Error fetching access token: \(error)")
+            })
+            .disposed(by: disposeBag)
 
-        
         return Output(url: loginUrl)
     }
 }

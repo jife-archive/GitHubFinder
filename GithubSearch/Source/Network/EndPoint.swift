@@ -73,8 +73,4 @@ extension GithubSearchTarget: TargetType {
             ]
         }
     }
-    
-    var validationType: ValidationType {
-        return .successCodes
-    }
 }

@@ -20,13 +20,43 @@ class SearchService {
             let disposable = self.provider.rx
                 .request(.search(userName: userName))
                 .filterSuccessfulStatusCodes()
-                .map (UserListDTO.self)
+                .map(UserListDTO.self)
                 .subscribe(onSuccess: { res in
                     single(.success(res))
+                }, onFailure: { error in
+                    if let moyaError = error as? MoyaError {
+                        single(.failure(self.handleError(moyaError)))
+                    } else {
+                        single(.failure(APIError.connectionError))
+                    }
                 })
             return Disposables.create {
                 disposable.dispose()
             }
+        }
+    }
+
+}
+extension SearchService {
+    private func handleError(_ moyaError: MoyaError) -> APIError {
+        switch moyaError {
+        case .statusCode(let response):
+            switch response.statusCode {
+            case 401:
+                return .unauthorized
+            case 404:
+                return .invaildURL
+            case 500...599:
+                return .serverError
+            default:
+                return .customError("Unexpected status code: \(response.statusCode)")
+            }
+        case .imageMapping, .jsonMapping, .stringMapping:
+            return .invalidData
+        case .underlying(let error, _):
+            return .customError("Unknown error: \(error.localizedDescription)")
+        default:
+            return .connectionError
         }
     }
 }

@@ -64,7 +64,6 @@ extension GithubSearchTarget: TargetType {
     
     var headers: [String : String]? {
         switch self {
-            
         case .requestAccessToken:
             return ["Accept": "application/json"]
         case .search:

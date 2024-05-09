@@ -11,8 +11,6 @@ import RxSwift
 import RxCocoa
 
 final class SearchViewController: BaseViewController {
-    
-    
     //MARK: - Properties
     
     private let viewModel: SearchViewModel
@@ -36,6 +34,7 @@ final class SearchViewController: BaseViewController {
         $0.layer.borderColor = UIColor.darkGray.cgColor
         $0.rightViewMode = .always
         $0.autocapitalizationType = .none
+        $0.returnKeyType = .search
         $0.addLeftPadding()
     }
     private let emptyView = EmptyView().then {
@@ -46,7 +45,8 @@ final class SearchViewController: BaseViewController {
         $0.register(UserListTableViewCell.self, forCellReuseIdentifier: UserListTableViewCell.identifier)
         $0.separatorInset = .zero
     }
-    
+    private var activityIndicator = UIActivityIndicatorView(style: .large)
+
     //MARK: - LifeCycle
 
     init(viewModel: SearchViewModel) {
@@ -67,7 +67,7 @@ final class SearchViewController: BaseViewController {
     
     override func addView() {
         searchBar.addSubview(searchImg)
-        [searchBar, userInfoTableView].forEach {
+        [searchBar, userInfoTableView, activityIndicator].forEach {
             self.view.addSubview($0)
         }
         userInfoTableView.addSubview(emptyView)
@@ -95,6 +95,9 @@ final class SearchViewController: BaseViewController {
         emptyView.snp.makeConstraints {
             $0.center.equalToSuperview()
         }
+        activityIndicator.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
     }
     
     override func binding() {
@@ -120,11 +123,19 @@ final class SearchViewController: BaseViewController {
             .bind(to: searchBar.rx.text)
             .disposed(by: disposeBag)
         
+        searchBar.rx.controlEvent(.editingDidEndOnExit)
+               .asSignal()
+               .emit(onNext: { [weak self]  _ in
+                   self?.activityIndicator.startAnimating()
+               })
+               .disposed(by: disposeBag)
+        
         output.searchResult
             .bind(to: userInfoTableView.rx.items(cellIdentifier: UserListTableViewCell.identifier,
                                                  cellType: UserListTableViewCell.self))
-        {  index, item, cell in
+        {  [weak self]  index, item, cell in
             cell.configure(name: item.name, url: item.url, img: item.imgURL)
+            self?.activityIndicator.stopAnimating()
         }
         .disposed(by: disposeBag)
         

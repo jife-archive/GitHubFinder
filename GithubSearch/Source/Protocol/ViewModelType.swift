@@ -9,6 +9,7 @@ import Foundation
 
 import RxSwift
 
+// 뷰모델 기본 Protocol
 protocol ViewModelType {
     associatedtype Input
     associatedtype Output

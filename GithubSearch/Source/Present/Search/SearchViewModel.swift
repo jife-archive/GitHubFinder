@@ -46,29 +46,29 @@ final class SearchViewModel: ViewModelType {
         let searchResult: Observable<[UserInfo]>  // 검색 결과를 보여주는 변수
         let totalSearchCount: Observable<Int>  // 검색된 총 유저의 수를 보여주는 변수
     }
+    
     // MARK: - Method
 
     func transform(input: Input) -> Output {
         input.didSelectRowAt
             .emit(onNext: {  [weak self] res in
-//                let url = URL(string: res)
-//                self?.userInfoUrl.onNext(url)
+                self?.coordinator?.pushUserDetail(userUrl: res.url, userName: res.name)
             })
             .disposed(by: disposeBag)
         
-        input.viewWillAppear
+        input.viewWillAppear    /// 뷰가 보여질 때, 초기화 시키는 로직입니다.
             .emit(onNext: {  [weak self]  _ in
                 
             })
             .disposed(by: disposeBag)
         
-        input.inputText
+        input.inputText     /// 서치바의 텍스트를 실시간으로 감지하는 로직입니다.
             .subscribe(onNext: {  [weak self]  text in
                 self?.textInput.onNext(text)
             })
             .disposed(by: disposeBag)
         
-        input.clearTapped
+        input.clearTapped   /// 유저가 clear버튼을 탭 했을때, 텍스트 삭제 및 키보드 내리는 로직입니다.
             .emit(onNext: {  [weak self] _ in
                 self?.textInput.onNext("")
             })
@@ -90,7 +90,7 @@ final class SearchViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
         
-        let clearBtnVisible = textInput
+        let clearBtnVisible = textInput /// claer버튼과 검색버튼 숨김 처리 로직입니다.
             .map { $0.isEmpty }
             .distinctUntilChanged()
         

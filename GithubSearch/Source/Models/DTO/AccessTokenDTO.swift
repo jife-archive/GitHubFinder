@@ -7,7 +7,7 @@
 
 import Foundation
 
-// AccesToken DTO
+// AccesToken 객체
 struct AccessTokenDTO: Decodable {
     let access_token: String
 }

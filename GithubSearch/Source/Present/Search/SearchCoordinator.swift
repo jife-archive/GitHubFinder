@@ -20,9 +20,11 @@ final class SearchCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func pushUserDetail(userName: String) {
-        let vc = UserDetailViewController()
+    func pushUserDetail(userUrl: String, userName: String) {
+        let vc = UserDetailViewController(url: userUrl)
         navigationController.isNavigationBarHidden = false
+        navigationController.navigationItem.title = userName
+        navigationController.navigationBar.barTintColor = .black
         navigationController.pushViewController(vc, animated: true)
     }
     

@@ -40,14 +40,15 @@ final class LoginViewModel: ViewModelType {
     // MARK: - Method
 
     func transform(input: Input) -> Output {
-        input.loginTap
+        input.loginTap  /// 로그인 버튼 탭시, 깃허브 URL의 정보를 가져오는 로직입니다.
             .emit(onNext: {  [weak self]  _ in
                 let gitHubUrl = URL(string: "\(self?.urlConstants.GitHubURL ?? "")\(self?.urlConstants.ClientId ?? "")")
                 self?.loginUrl.onNext(gitHubUrl)
             })
             .disposed(by: disposeBag)
         
-        NotificationCenter.default.rx.notification(UIApplication.willEnterForegroundNotification) /// 깃헙 로그인 후, 받은 code를 바탕으로 OAuth를 요청하는 로직입니다.
+        /// 깃헙 로그인 후, 받은 code를 바탕으로 OAuth를 요청 및 받은 토큰을 싱글톤 패턴으로 저장하는 로직입니다.
+        NotificationCenter.default.rx.notification(UIApplication.willEnterForegroundNotification)
             .observe(on: MainScheduler.instance)
             .flatMapLatest { [weak self] _ -> Single<AccessTokenDTO> in
                 guard let self = self else { return .error(RxError.noElements) }

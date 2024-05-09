@@ -7,6 +7,7 @@
 
 import UIKit
 
+// 기본 Coordinator Protocol
 protocol CoordinatorDelegate: AnyObject {
     func didFinish(childCoordinator: any Coordinator)
 }
@@ -19,7 +20,7 @@ protocol Coordinator: AnyObject {
     func start()
     func finish()
 }
-extension Coordinator {
+extension Coordinator { /// Coordinator의 네비게이션 스택을 효율적으로 관리하기 위한 Extension입니다.
     func finish() {
         childCoordinators.removeAll()
         delegate?.didFinish(childCoordinator: self)

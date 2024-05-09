@@ -18,7 +18,7 @@ final class UserDetailViewController: BaseViewController {
     
     //MARK: - LifeCycle
     
-    init() {
+    init(url: String) {
         super.init(nibName: nil, bundle: nil)
     }
     

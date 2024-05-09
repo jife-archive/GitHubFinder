@@ -46,7 +46,6 @@ final class SearchViewController: BaseViewController {
         $0.register(UserListTableViewCell.self, forCellReuseIdentifier: UserListTableViewCell.identifier)
         $0.separatorInset = .zero
     }
-
     
     //MARK: - LifeCycle
 

@@ -18,7 +18,7 @@ final class UserDetailViewController: BaseViewController {
 
     //MARK: - UI
     
-    private let wkWebView = WKWebView()
+    private let wkWebView = WKWebView(frame: .zero, configuration: WKWebViewConfiguration())
     private var activityIndicator = UIActivityIndicatorView(style: .large)
 
     //MARK: - LifeCycle
@@ -26,6 +26,7 @@ final class UserDetailViewController: BaseViewController {
     init(url: String) {
         self.url = url
         super.init(nibName: nil, bundle: nil)
+        loadWebPage()
     }
     
     required init?(coder: NSCoder) {
@@ -36,7 +37,6 @@ final class UserDetailViewController: BaseViewController {
     
     override func configure() {
         wkWebView.navigationDelegate = self
-        loadWebPage()
     }
     
     override func addView() {
@@ -57,12 +57,13 @@ final class UserDetailViewController: BaseViewController {
     }
     
     private func loadWebPage() {
+        
         guard let url = URL(string: self.url) else {
             print("Invalid URL")
             return
         }
         let request = URLRequest(url: url)
-            self.wkWebView.load(request)
+        self.wkWebView.load(request)
     }
 }
 // MARK: - Extension

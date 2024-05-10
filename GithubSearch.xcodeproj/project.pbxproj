@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09DEABC82BEA391F004246E8 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DEABC72BEA391F004246E8 /* LoginService.swift */; };
+		0992D10B2BECF79F00E508BF /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992D10A2BECF79F00E508BF /* Error.swift */; };
+		0992D10D2BED9BE300E508BF /* ActivityIndicatorView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992D10C2BED9BE300E508BF /* ActivityIndicatorView+Extension.swift */; };
 		09DEABCA2BEA4052004246E8 /* UrlConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DEABC92BEA4052004246E8 /* UrlConstants.swift */; };
 		09DEABCD2BEA5008004246E8 /* TokenManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DEABCC2BEA5008004246E8 /* TokenManger.swift */; };
 		09DEABD02BEA6CCD004246E8 /* TextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DEABCF2BEA6CCD004246E8 /* TextField+Extension.swift */; };
@@ -25,7 +26,7 @@
 		DE2A97E22BE9F80000D04534 /* GithubSearchUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A97E12BE9F80000D04534 /* GithubSearchUITestsLaunchTests.swift */; };
 		DE2A97F42BE9FA0D00D04534 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A97F32BE9FA0D00D04534 /* ViewModelType.swift */; };
 		DE2A97F82BE9FBF400D04534 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A97F72BE9FBF400D04534 /* SearchViewModel.swift */; };
-		DE2A98002BE9FD7700D04534 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A97FF2BE9FD7700D04534 /* SearchService.swift */; };
+		DE2A98002BE9FD7700D04534 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A97FF2BE9FD7700D04534 /* Service.swift */; };
 		DE2A98022BE9FD7D00D04534 /* AccessTokenDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A98012BE9FD7D00D04534 /* AccessTokenDTO.swift */; };
 		DE2A98052BE9FF4D00D04534 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DE2A98042BE9FF4D00D04534 /* CombineMoya */; };
 		DE2A98072BE9FF4D00D04534 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = DE2A98062BE9FF4D00D04534 /* Moya */; };
@@ -65,7 +66,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		09DEABC72BEA391F004246E8 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		0992D10A2BECF79F00E508BF /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		0992D10C2BED9BE300E508BF /* ActivityIndicatorView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityIndicatorView+Extension.swift"; sourceTree = "<group>"; };
 		09DEABC92BEA4052004246E8 /* UrlConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlConstants.swift; sourceTree = "<group>"; };
 		09DEABCC2BEA5008004246E8 /* TokenManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManger.swift; sourceTree = "<group>"; };
 		09DEABCF2BEA6CCD004246E8 /* TextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+Extension.swift"; sourceTree = "<group>"; };
@@ -86,7 +88,7 @@
 		DE2A97E12BE9F80000D04534 /* GithubSearchUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSearchUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DE2A97F32BE9FA0D00D04534 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		DE2A97F72BE9FBF400D04534 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
-		DE2A97FF2BE9FD7700D04534 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		DE2A97FF2BE9FD7700D04534 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		DE2A98012BE9FD7D00D04534 /* AccessTokenDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenDTO.swift; sourceTree = "<group>"; };
 		DE2A98132BE9FFAF00D04534 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		DE2A981D2BEA017A00D04534 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
@@ -137,8 +139,7 @@
 		09DEABCB2BEA4FF2004246E8 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				DE2A97FF2BE9FD7700D04534 /* SearchService.swift */,
-				09DEABC72BEA391F004246E8 /* LoginService.swift */,
+				DE2A97FF2BE9FD7700D04534 /* Service.swift */,
 				09DEABCC2BEA5008004246E8 /* TokenManger.swift */,
 			);
 			path = Service;
@@ -148,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				09DEABCF2BEA6CCD004246E8 /* TextField+Extension.swift */,
+				0992D10C2BED9BE300E508BF /* ActivityIndicatorView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				09DEABC92BEA4052004246E8 /* UrlConstants.swift */,
+				0992D10A2BECF79F00E508BF /* Error.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -489,7 +492,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09DEABC82BEA391F004246E8 /* LoginService.swift in Sources */,
 				DE2A98292BEA13F100D04534 /* LoginViewController.swift in Sources */,
 				09DEABD52BEB7B7A004246E8 /* EmptyView.swift in Sources */,
 				DE2A98242BEA09DE00D04534 /* AppCoordinator.swift in Sources */,
@@ -501,10 +503,12 @@
 				DE2A98202BEA01CA00D04534 /* EndPoint.swift in Sources */,
 				09DEABD02BEA6CCD004246E8 /* TextField+Extension.swift in Sources */,
 				DE2A981E2BEA017B00D04534 /* UserDetailViewController.swift in Sources */,
-				DE2A98002BE9FD7700D04534 /* SearchService.swift in Sources */,
+				0992D10D2BED9BE300E508BF /* ActivityIndicatorView+Extension.swift in Sources */,
+				DE2A98002BE9FD7700D04534 /* Service.swift in Sources */,
 				09DEABCA2BEA4052004246E8 /* UrlConstants.swift in Sources */,
 				09DEABD32BEA78B7004246E8 /* UserListTableViewCell.swift in Sources */,
 				09DEABD92BEB8C31004246E8 /* UserListDTO.swift in Sources */,
+				0992D10B2BECF79F00E508BF /* Error.swift in Sources */,
 				DE2A97F82BE9FBF400D04534 /* SearchViewModel.swift in Sources */,
 				DE2A98222BEA09B900D04534 /* Coordinator.swift in Sources */,
 				DE2A97C32BE9F7FD00D04534 /* SearchViewController.swift in Sources */,

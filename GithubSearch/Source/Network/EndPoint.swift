@@ -70,7 +70,7 @@ extension GithubSearchTarget: TargetType {
             return ["Accept": "application/json",
                     "Authorization": "token \(TokenManager.shared.getToken() ?? "")",
                     "X-GitHub-Api-Version" : "2022-11-28"
-            ]
+            ] //\(TokenManager.shared.getToken()
         }
     }
 }

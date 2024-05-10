@@ -23,7 +23,6 @@ final class SearchViewController: BaseViewController {
         $0.tintColor = .black
     }
     private let clearBtn = UIButton().then {
-        $0.isHidden = true
         $0.setImage(UIImage(systemName: "xmark.circle"), for: .normal)
         $0.tintColor = .black
     }
@@ -48,6 +47,10 @@ final class SearchViewController: BaseViewController {
     private var activityIndicator = UIActivityIndicatorView(style: .large)
 
     //MARK: - LifeCycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
 
     init(viewModel: SearchViewModel) {
         self.viewModel = viewModel
@@ -62,11 +65,11 @@ final class SearchViewController: BaseViewController {
     
     override func configure() {
         userInfoTableView.delegate = self
-        searchBar.rightView = clearBtn
     }
     
     override func addView() {
         searchBar.addSubview(searchImg)
+        searchBar.addRightView(view: clearBtn)
         [searchBar, userInfoTableView, activityIndicator].forEach {
             self.view.addSubview($0)
         }
@@ -102,9 +105,8 @@ final class SearchViewController: BaseViewController {
     
     override func binding() {
         let input = SearchViewModel.Input(
-            viewWillAppear: self.rx.viewWillAppear.asSignal(),
             inputText: searchBar.rx.text.orEmpty.asObservable(),  
-            searchTapped: searchBar.rx.controlEvent(.editingDidEndOnExit).asSignal(),
+            searchTapped: searchBar.rx.controlEvent(.editingDidEndOnExit).asSignal(onErrorSignalWith: .empty()),
             didSelectRowAt: userInfoTableView.rx.modelSelected(UserInfo.self).asSignal(), 
             clearTapped: clearBtn.rx.tap.asSignal()
         )
@@ -123,25 +125,31 @@ final class SearchViewController: BaseViewController {
             .bind(to: searchBar.rx.text)
             .disposed(by: disposeBag)
         
-        searchBar.rx.controlEvent(.editingDidEndOnExit)
-               .asSignal()
-               .emit(onNext: { [weak self]  _ in
-                   self?.activityIndicator.startAnimating()
-               })
-               .disposed(by: disposeBag)
+        userInfoTableView.rx
+            .itemSelected
+            .subscribe(onNext: { [weak self] _ in
+                self?.view.endEditing(true)
+            })
+            .disposed(by: disposeBag)
         
         output.searchResult
             .bind(to: userInfoTableView.rx.items(cellIdentifier: UserListTableViewCell.identifier,
                                                  cellType: UserListTableViewCell.self))
-        {  [weak self]  index, item, cell in
+        {  index, item, cell in
             cell.configure(name: item.name, url: item.url, img: item.imgURL)
-            self?.activityIndicator.stopAnimating()
+            cell.selectionStyle = .none
         }
         .disposed(by: disposeBag)
         
         output.totalSearchCount
             .map { $0 != 0 }
-            .bind(to: emptyView.rx.isHidden)
+            .bind(onNext: {  [weak self]  res in
+                self?.emptyView.isHidden = res
+            })
+            .disposed(by: disposeBag)
+        
+        output.indicatorVisible
+            .drive(activityIndicator.rx.isAnimating)
             .disposed(by: disposeBag)
     }
 }

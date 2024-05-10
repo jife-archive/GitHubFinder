@@ -25,6 +25,7 @@ class Service {
                     return try decoder.decode(AccessTokenDTO.self, from: response.data)
                 }
                 .subscribe(onSuccess: { res in
+                    print(res)
                     single(.success(res))
                 })
             return Disposables.create {
@@ -40,8 +41,10 @@ class Service {
                 .filterSuccessfulStatusCodes()
                 .map(UserListDTO.self)
                 .subscribe(onSuccess: { res in
+                    print(res)
                     single(.success(res))
                 }, onFailure: { error in
+                    print(error)
                     if let moyaError = error as? MoyaError {
                         single(.failure(self.handleError(moyaError)))
                     } else {
@@ -55,7 +58,7 @@ class Service {
     }
 
 }
-extension SearchService {
+extension Service {
     private func handleError(_ moyaError: MoyaError) -> APIError {
         switch moyaError {
         case .statusCode(let response):

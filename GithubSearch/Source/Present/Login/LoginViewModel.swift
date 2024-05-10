@@ -16,13 +16,13 @@ final class LoginViewModel: ViewModelType {
 
     var disposeBag = DisposeBag()
     weak var coordinator: LoginCoordinator?
-    private let service: LoginService
+    private let service: Service
     private let loginUrl = PublishSubject<URL?>()
     private let urlConstants: UrlConstants
     
     // MARK: - Init
 
-    init(coordinator: LoginCoordinator?, service: LoginService, urlConstants: UrlConstants) {
+    init(coordinator: LoginCoordinator?, service: Service, urlConstants: UrlConstants) {
         self.coordinator = coordinator
         self.service = service
         self.urlConstants = urlConstants

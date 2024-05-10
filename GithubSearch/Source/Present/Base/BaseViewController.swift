@@ -32,29 +32,3 @@ class BaseViewController: UIViewController {
         self.binding()
     }
 }
-extension Reactive where Base: UIViewController {   /// Rx를 이용해, 생명주기를 효율적으로 관리하기 위한 Extension입니다.
-    var viewDidLoad: ControlEvent<Void> {
-        let source = self.methodInvoked(#selector(Base.viewDidLoad)).map { _ in }
-        return ControlEvent(events: source)
-    }
-    
-    var viewWillAppear: ControlEvent<Void> {
-        let source = self.methodInvoked(#selector(Base.viewWillAppear)).map { _ in }
-        return ControlEvent(events: source)
-    }
-    
-    var viewDidAppear: ControlEvent<Bool> {
-        let source = self.methodInvoked(#selector(Base.viewDidAppear)).map { $0.first as? Bool ?? false }
-        return ControlEvent(events: source)
-    }
-    
-    var viewWillDisappear: ControlEvent<Bool> {
-        let source = self.methodInvoked(#selector(Base.viewWillDisappear)).map { $0.first as? Bool ?? false }
-        return ControlEvent(events: source)
-    }
-    
-    var viewDidDisappear: ControlEvent<Void> {
-        let source = self.methodInvoked(#selector(Base.viewDidDisappear)).map { _ in () }
-        return ControlEvent(events: source)
-    }
-}

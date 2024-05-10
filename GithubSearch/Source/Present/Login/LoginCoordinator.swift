@@ -16,7 +16,7 @@ final class LoginCoordinator: Coordinator {
     var delegate: CoordinatorDelegate?
     
     func start() {
-        let vm = LoginViewModel(coordinator: self, service: LoginService(), urlConstants: UrlConstants())
+        let vm = LoginViewModel(coordinator: self, service: Service(), urlConstants: UrlConstants())
         let vc = LoginViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)
     }

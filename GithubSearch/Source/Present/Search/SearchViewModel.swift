@@ -136,7 +136,6 @@ final class SearchViewModel: ViewModelType {
             }
             .subscribe(onNext: { accessToken in
                 TokenManager.shared.saveToken(accessToken.access_token)
-                print(TokenManager.shared.getToken())
             }, onError: { error in
                 print("Error fetching access token: \(error)")
             })

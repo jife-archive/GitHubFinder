@@ -26,7 +26,7 @@ final class SearchCoordinator: Coordinator {
         let vc = UserDetailViewController(url: userUrl)
         navigationController.isNavigationBarHidden = false
         vc.navigationItem.title = userName
-        navigationController.navigationBar.backItem?.backBarButtonItem?.tintColor = .black
+        navigationController.navigationBar.tintColor = .black
         navigationController.pushViewController(vc, animated: true)
     }
     

@@ -72,7 +72,6 @@ final class SearchViewModel: ViewModelType {
             .disposed(by: disposeBag)
                 
         let searchTrigger = input.searchTapped
-            .debug()
             .asObservable()
             .withLatestFrom(input.inputText)
                 

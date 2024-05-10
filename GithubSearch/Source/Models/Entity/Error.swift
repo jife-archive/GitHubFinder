@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum APIError: Error {
+enum APIError: Error {  // 에러를 처리하기 위한 객체
     case connectionError
     case invalidData
     case serverError

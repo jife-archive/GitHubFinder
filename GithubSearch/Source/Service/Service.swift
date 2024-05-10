@@ -58,7 +58,7 @@ class Service {
     }
 
 }
-extension Service {
+extension Service { /// 에러코드를 처리하기 위한 Extension입니다.
     private func handleError(_ moyaError: MoyaError) -> APIError {
         switch moyaError {
         case .statusCode(let response):

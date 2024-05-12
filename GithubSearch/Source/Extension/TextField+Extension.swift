@@ -15,7 +15,7 @@ extension UITextField {
         self.leftViewMode = ViewMode.always
     }
     
-    func addRightView(view: UIView) {  /// 텍스트 필듣 오른쪽에 뷰를 넣고, 패딩값을 주기 위한 함수입니다.
+    func addRightView(view: UIView) {  /// 텍스트 필드 오른쪽에 뷰를 넣고, 패딩값을 주기 위한 함수입니다.
         let container = UIView()
         container.addSubview(view)
         

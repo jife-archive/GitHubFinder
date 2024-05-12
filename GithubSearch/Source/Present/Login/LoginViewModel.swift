@@ -47,7 +47,7 @@ final class LoginViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
         
-        /// 깃헙 로그인 후, 받은 code를 바탕으로 OAuth를 요청 및 받은 토큰을 싱글톤 패턴으로 저장하는 로직입니다.
+        /// 깃헙 로그인 후, 받은 code를 바탕으로 OAuth를 요청 및 받은 토큰을 싱글톤 패턴으로 저장하는 로직입니다. 참고자료[1]을 참고하여 로직을 구성하였습니다.
         NotificationCenter.default.rx.notification(UIApplication.willEnterForegroundNotification)
             .observe(on: MainScheduler.instance)
             .flatMapLatest { [weak self] _ -> Single<AccessTokenDTO> in

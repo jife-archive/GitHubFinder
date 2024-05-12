@@ -81,11 +81,11 @@ final class SearchViewModel: ViewModelType {
                 return self.service.fetchUserList(userName: text)
                     .asObservable()
                     .do(onSubscribe: { self.indicatorVisible.accept(true) }) // 검색 시작 시, 인디게이터 상태 제어
-                    .catch { error -> Observable<UserListDTO> in
+                    .catch { error -> Observable<UserListDTO> in    ///참고자료[2]를 참고하여 작성한 로직입니다.
                         if let apiError = error as? APIError {
                             switch apiError {
                             case .unauthorized:
-                                // 에러 처리와 함께 로그인 재요청 로직을 실행하지만, 에러를 종료시키지 않고 계속 진행
+                                // 에러 처리와 함께 로그인 재요청 로직을 실행하지만, 스트림을 종료시키지 않고 계속 진행.
                                 self.coordinator?.pushRequestToken()
                                 self.indicatorVisible.accept(false)
                                 self.retryWithTokenRefresh()
@@ -126,7 +126,7 @@ final class SearchViewModel: ViewModelType {
         )
     }
     
-    private func retryWithTokenRefresh() {
+    private func retryWithTokenRefresh() {      /// 토큰을 재 요청하는 함수입니다. 참고자료[1]을 참고하여 작성하였습니다.
         NotificationCenter.default.rx.notification(UIApplication.willEnterForegroundNotification)
             .observe(on: MainScheduler.instance)
             .flatMapLatest { [weak self] _ -> Single<AccessTokenDTO> in

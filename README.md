@@ -19,8 +19,7 @@
 - Coordinator
 - Singleton
 - Input, Output
-
-
+![스크린샷 2024-05-10 오후 4 53 47](https://github.com/jife-archive/GitHubFinder/assets/114370871/3626bf5e-caf3-4054-8db9-c4247b7bd2fd)
 
 # **📲** UML
 
@@ -158,7 +157,7 @@ extension Reactive where Base: UIActivityIndicatorView {
 - 인디케이터뷰의 상태를 변경하기 위해서는 코드를 추가해주어야 합니다.  **`startAnimating()`**과 **`stopAnimating()`** 메소드 호출을 자동화함으로써, 반복적인 코드를 줄여줍니다.
 - 또한, 저는 RxSwift를 통해 반응형 패러다임을 도입하였습니다. **`isAnimating`** 바인더를 통해 **`UIActivityIndicatorView`**의 상태도 반응형으로 관리할 수 있게 되므로, 일관된 프로그래밍 패턴을 유지할 수 있습니다.
 
-# 🧐 과제에 대한 설명 및 트러블슈팅
+# 🧐 설명 및 트러블슈팅
 
 ## 서드파티 라이브러리 사용 이유
 

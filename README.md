@@ -162,9 +162,6 @@ extension Reactive where Base: UIActivityIndicatorView {
 ## 서드파티 라이브러리 사용 이유
 
 ---
-
-필수 라이브러리외 사용한 라이브러리
-
 - **RxSwift**
     - 반응형 프로그래밍을 사용하여 효율적으로 **MVVM** 디자인 패턴을 적용하기 위해 RxSwift를 사용하였습니다.
         - MVVM의 ViewModel은 상태를 관리합니다. RxSwift를 사용하면, 이러한 상태를 Observable로 선언하고, 상태 변화를 구독하는 방식으로 관리할 수 있습니다. 이로 인해 상태 관리가 더 명확하고 예측 가능해집니다. 또한, 유저의 입력을 Observable 스트림으로 처리하여, ViewModel 내부의 로직에 쉽게 통합할 수 있습니다.
